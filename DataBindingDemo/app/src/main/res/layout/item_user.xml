@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="userInfo"
+            type="com.zksyp.databindingdemo.UserInfo"/>
+
+        <variable
+            name="holder"
+            type="com.zksyp.databindingdemo.UserAdapter.UserViewHolder"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="15dp"
+            android:gravity="center"
+            android:text="@{@string/name(userInfo.name)}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15dp"
+            tools:text="123"/>
+
+        <TextView
+            android:id="@+id/tv_gender"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="15dp"
+            android:layout_toRightOf="@id/tv_name"
+            android:gravity="center"
+            android:text="@{@string/gender(userInfo.gender)}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15dp"
+            android:visibility="gone"
+            tools:text="123"/>
+
+        <TextView
+            android:id="@+id/tv_age"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:text="@{@string/age(userInfo.age)}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15dp"
+            tools:text="123"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@id/tv_name"
+            android:layout_margin="10dp"
+            android:background="#FF8903"
+            android:gravity="center"
+            android:text="显示性别"
+            android:onClick="@{()->holder.showGenderClick()}"
+            android:textColor="#FFFFFF"/>
+
+    </RelativeLayout>
+</layout>
