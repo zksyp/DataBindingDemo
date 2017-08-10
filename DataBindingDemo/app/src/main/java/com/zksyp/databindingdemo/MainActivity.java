@@ -3,6 +3,7 @@ package com.zksyp.databindingdemo;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 
 import com.zksyp.databindingdemo.databinding.ActivityMainBinding;
 
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         }
         ActivityMainBinding binder = DataBindingUtil.setContentView(this, R.layout.activity_main);
         UserAdapter adapter = new UserAdapter(this, userInfoList);
+        binder.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         binder.setAdapter(adapter);
     }
 }

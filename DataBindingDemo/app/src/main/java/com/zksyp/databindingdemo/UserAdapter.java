@@ -31,7 +31,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     @Override
     public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ItemUserBinding binder = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext())
+        ItemUserBinding binder = DataBindingUtil.inflate(LayoutInflater.from(mContext)
                 , R.layout.item_user, parent, false);
         UserViewHolder holder = new UserViewHolder(binder.getRoot());
         holder.setBinder(binder);
@@ -68,6 +68,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
         public void showGenderClick() {
             binder.tvGender.setVisibility(isShowGender ? View.GONE : View.VISIBLE);
+            isShowGender = !isShowGender;
         }
     }
 }
