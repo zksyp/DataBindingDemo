@@ -35,6 +35,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     public UserAdapter(Context context, List<UserInfo> list) {
         mContext = context;
         mUserInfoList = list;
+        startCountdown();
     }
 
     @Override
@@ -93,7 +94,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     private Subscription countdownTask;
 
-    public void startCountdown() {
+    private void startCountdown() {
         countdownTask = Observable.interval(1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -111,7 +112,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                 });
     }
 
-    public void closeCountdown() {
+    void closeCountdown() {
         if (countdownTask != null && !countdownTask.isUnsubscribed()) {
             countdownTask.unsubscribe();
         }

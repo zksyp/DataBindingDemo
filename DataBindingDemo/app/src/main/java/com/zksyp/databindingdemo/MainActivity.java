@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         }
         ActivityMainBinding binder = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mAdapter = new UserAdapter(this, userInfoList);
-        mAdapter.startCountdown();
         binder.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         binder.setAdapter(mAdapter);
     }
