@@ -13,4 +13,7 @@ public class UserInfo {
     public String name;
     public String gender;
     public String age;
+
+    public Long remainTime;
+
 }

@@ -12,6 +12,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private UserAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +23,21 @@ public class MainActivity extends AppCompatActivity {
             userInfo.name = "赵凯";
             userInfo.gender = "男";
             userInfo.age = "23";
+            userInfo.remainTime = 1000L;
             userInfoList.add(userInfo);
         }
         ActivityMainBinding binder = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        UserAdapter adapter = new UserAdapter(this, userInfoList);
+        mAdapter = new UserAdapter(this, userInfoList);
+        mAdapter.startCountdown();
         binder.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        binder.setAdapter(adapter);
+        binder.setAdapter(mAdapter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mAdapter != null) {
+            mAdapter.closeCountdown();
+        }
     }
 }
