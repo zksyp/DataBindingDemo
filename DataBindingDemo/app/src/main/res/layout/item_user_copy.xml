@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.moki.databindingdemo.viewmodel.ItemUserViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginLeft="15dp"
+            android:gravity="center"
+            android:text="@{viewModel.mName}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15dp"
+            tools:text="123"/>
+
+        <TextView
+            android:id="@+id/tv_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="15dp"
+            android:layout_toRightOf="@id/tv_name"
+            android:gravity="center"
+            android:text="@{viewModel.mGender}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15dp"
+            android:visibility="gone"
+            tools:text="123sdfsf"
+            tools:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/tv_age"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:text="@{viewModel.mAge}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15dp"
+            tools:text="123"/>
+
+        <TextView
+            android:id="@+id/btn_gender"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@id/tv_name"
+            android:layout_margin="10dp"
+            android:background="#FF8903"
+            android:gravity="center"
+            android:text="显示性别"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:id="@+id/tv_countdown"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@id/btn_gender"
+            android:gravity="center"
+            android:text='@{viewModel.mRemain}'
+            android:textColor="#FF8903"
+            android:textSize="16dp"
+            tools:text="10分10秒"/>
+
+    </RelativeLayout>
+</layout>
