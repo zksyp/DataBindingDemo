@@ -2,12 +2,13 @@ package com.zksyp.databindingdemo;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
-import android.databinding.ObservableArrayList;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.qiyukf.unicorn.api.ConsultSource;
+import com.qiyukf.unicorn.api.Unicorn;
 import com.zksyp.databindingdemo.databinding.ItemUserBinding;
 
 import java.text.DecimalFormat;
@@ -42,7 +43,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     @Override
     public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ItemUserBinding binder = DataBindingUtil.inflate(LayoutInflater.from(mContext)
-                , R.layout.item_user, parent, false);
+                , viewType, parent, false);
         UserViewHolder holder = new UserViewHolder(binder.getRoot());
         holder.setBinder(binder);
         return holder;
@@ -69,6 +70,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         return mUserInfoList.size();
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return R.layout.item_user;
+    }
+
     public class UserViewHolder extends RecyclerView.ViewHolder {
         private boolean isShowGender = false;
         ItemUserBinding binder;
@@ -88,8 +94,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         }
 
         public void showGenderClick() {
-            binder.tvGender.setVisibility(isShowGender ? View.GONE : View.VISIBLE);
-            isShowGender = !isShowGender;
+//            binder.tvGender.setVisibility(isShowGender ? View.GONE : View.VISIBLE);
+//            isShowGender = !isShowGender;
+            ConsultSource source = new ConsultSource("Mhc", "卖好车APP", "");
+            Unicorn.openServiceActivity(mContext, "卖好车客服", source);
         }
     }
 
